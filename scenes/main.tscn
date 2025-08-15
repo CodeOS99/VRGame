@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4vvfqwi5nbf0"]
+[gd_scene load_steps=12 format=3 uid="uid://c4vvfqwi5nbf0"]
 
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="1_baqrj"]
 [ext_resource type="PackedScene" uid="uid://bll3o58qcf8g3" path="res://scenes/player.tscn" id="1_byavd"]
+[ext_resource type="PackedScene" uid="uid://ikelqogyqpox" path="res://scenes/pikcup_cube.tscn" id="3_hab0r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i252u"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,6 +22,16 @@ size = Vector3(5, 0.5, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a8hdt"]
 size = Vector3(5, 0.5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ob3a"]
+albedo_color = Color(0.489622, 0.489622, 0.489622, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tkkie"]
+material = SubResource("StandardMaterial3D_8ob3a")
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t5ple"]
+size = Vector3(1, 1, 0.5)
 
 [node name="Main" type="Node3D"]
 
@@ -43,3 +54,15 @@ shape = SubResource("BoxShape3D_unhrq")
 mesh = SubResource("BoxMesh_a8hdt")
 
 [node name="player" parent="." instance=ExtResource("1_byavd")]
+
+[node name="table" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02715, 0)
+mesh = SubResource("BoxMesh_tkkie")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table/StaticBody3D"]
+shape = SubResource("BoxShape3D_t5ple")
+
+[node name="PickableObject" parent="." instance=ExtResource("3_hab0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70118, 0)
