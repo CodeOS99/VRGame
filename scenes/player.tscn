@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bll3o58qcf8g3"]
+[gd_scene load_steps=9 format=3 uid="uid://bll3o58qcf8g3"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_63xk0"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_50us2"]
@@ -6,12 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_mb0cl"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="4_0wkx0"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_2f7ha"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_w022r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ir674"]
+radius = 0.275
+height = 2.09
 
 [node name="player" type="XROrigin3D"]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 
 [node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.67006, 0, 0)
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_63xk0")]
@@ -20,6 +26,11 @@ tracker = &"left_hand"
 strafe = true
 
 [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("3_mb0cl")]
+
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("4_w022r")]
+show_laser = 2
+laser_length = 1
+show_target = true
 
 [node name="RightHand" type="XRController3D" parent="."]
 tracker = &"right_hand"
@@ -32,4 +43,13 @@ step_turn_angle = 45.0
 
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("3_mb0cl")]
 
+[node name="FunctionPointer" parent="RightHand" instance=ExtResource("4_w022r")]
+show_laser = 2
+laser_length = 1
+show_target = true
+
 [node name="PlayerBody" parent="." instance=ExtResource("4_0wkx0")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.397225, -0.625148, 0)
+mesh = SubResource("CapsuleMesh_ir674")

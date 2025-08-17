@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://cjl3ksgtvp4t7"]
+
+[ext_resource type="PackedScene" uid="uid://bll3o58qcf8g3" path="res://scenes/player.tscn" id="1_or534"]
+[ext_resource type="PackedScene" uid="uid://dm84tfkoensng" path="res://Assets/Basketball/basketball_arcade_.blend_free_low_poly_v1.0.glb" id="2_1ak68"]
+[ext_resource type="PackedScene" uid="uid://dq7iendk3rfby" path="res://scenes/coin.tscn" id="3_qv6d4"]
+[ext_resource type="PackedScene" uid="uid://bbichp0xkry4v" path="res://Assets/Table/desk.glb" id="4_g0krh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6joaj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_6yl1v"]
+sky_material = SubResource("ProceduralSkyMaterial_6joaj")
+
+[sub_resource type="Environment" id="Environment_l8lch"]
+background_mode = 2
+sky = SubResource("Sky_6yl1v")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_do828"]
+size = Vector3(57, 3, 71)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3yygc"]
+size = Vector3(57, 3, 71)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sd0mt"]
+albedo_color = Color(0.658824, 0.254902, 0.25098, 1)
+metallic = 1.0
+roughness = 0.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2rbo"]
+material = SubResource("StandardMaterial3D_sd0mt")
+size = Vector3(5, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0xsm"]
+size = Vector3(5, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpq8p"]
+size = Vector3(2.42566, 1, 1.05695)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l8lch")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 112.158, 117.607, 76.5231)
+shadow_enabled = true
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
+mesh = SubResource("BoxMesh_do828")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+shape = SubResource("BoxShape3D_3yygc")
+
+[node name="playerPlatform" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73051, 1.895, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="playerPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.651702, 0, 0.349196)
+mesh = SubResource("BoxMesh_b2rbo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playerPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164507, 0, 0)
+shape = SubResource("BoxShape3D_f0xsm")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_1ak68")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.706864, 0.747551, 1.36685)
+
+[node name="player" parent="." instance=ExtResource("1_or534")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.81664, 3.92433, 0.745384)
+
+[node name="Coin" parent="." instance=ExtResource("3_qv6d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88055, 3.71069, -0.910209)
+
+[node name="desk" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.079, 2.145, -0.458)
+
+[node name="model" parent="desk" instance=ExtResource("4_g0krh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.923918, 0.712635, -0.549558)
+shape = SubResource("BoxShape3D_xpq8p")
