@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv55snxn3oqar"]
+
+[ext_resource type="FontFile" uid="uid://bsfjafdbgbyl" path="res://Assets/Fonts/DS-DIGIB.TTF" id="1_btdsu"]
+[ext_resource type="Script" path="res://scripts/score_display.gd" id="1_is0oy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyegd"]
+bg_color = Color(0.201816, 7.0692e-08, 5.41471e-08, 1)
+
+[node name="score_display" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_is0oy")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.5
+offset_top = -175.5
+offset_right = 267.5
+offset_bottom = 175.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uyegd")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.500741, 1.2153e-06, 1.44392e-07, 1)
+theme_override_colors/font_shadow_color = Color(0.851848, 0.382876, 1, 1)
+theme_override_fonts/font = ExtResource("1_btdsu")
+theme_override_font_sizes/font_size = 350
+text = "000"
+horizontal_alignment = 1

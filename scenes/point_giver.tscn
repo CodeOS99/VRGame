@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd5qe0evudgoa"]
+
+[ext_resource type="Script" path="res://scripts/point_giver.gd" id="1_mwmyb"]
+
+[node name="PointGiver" type="Area3D"]
+script = ExtResource("1_mwmyb")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
