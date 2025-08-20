@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnfulvd4wfuho"]
+
+[ext_resource type="PackedScene" uid="uid://2mkmq6ny3p7" path="res://Assets/CoinTaker/Blender/CoinTaker.blend" id="1_kbhva"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="2_6uncu"]
+
+[node name="CoinTaker" type="Node3D"]
+
+[node name="model" parent="." instance=ExtResource("1_kbhva")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="SnapZone" parent="." instance=ExtResource("2_6uncu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.239822, 0, 0)
+snap_require = "Coin"

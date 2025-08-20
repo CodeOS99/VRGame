@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bja4skfup2n6q"
+path.s3tc="res://.godot/imported/basketball_arcade_.blend_free_low_poly_v1_Image_3.jpg-1509007ff938dd1e9438ae160a4bac15.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "67d50f3daaaf34a38d35fd452682f687"
+}
+
+[deps]
+
+source_file="res://Assets/Basketball/basketball_arcade_.blend_free_low_poly_v1_Image_3.jpg"
+dest_files=["res://.godot/imported/basketball_arcade_.blend_free_low_poly_v1_Image_3.jpg-1509007ff938dd1e9438ae160a4bac15.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Assets/Basketball/basketball_arcade_.blend_free_low_poly_v1_Image_3.jpg"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
