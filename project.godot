@@ -29,6 +29,10 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addon
 Coin="Coni"
 Ball="Ball"
 
+[gui]
+
+theme/custom_font="res://Assets/Fonts/DS-DIGIB.TTF"
+
 [layer_names]
 
 3d_physics/layer_1="Static World"

@@ -103,6 +103,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_flqyo")
 
 [node name="ball" groups=["Ball"] instance=ExtResource("1_n0xcx")]
+can_sleep = false
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0121606, 0.00829333, 0)
