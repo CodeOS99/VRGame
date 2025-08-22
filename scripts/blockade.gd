@@ -5,6 +5,7 @@ func _ready() -> void:
 
 func block():
 	$AnimationPlayer.play("block")
+	Globals.reset_points()
 
 func unblock():
 	$AnimationPlayer.play("unblock")

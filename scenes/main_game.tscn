@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cjl3ksgtvp4t7"]
+[gd_scene load_steps=39 format=3 uid="uid://cjl3ksgtvp4t7"]
 
 [ext_resource type="Script" path="res://scripts/globals.gd" id="1_38iq0"]
 [ext_resource type="PackedScene" uid="uid://bll3o58qcf8g3" path="res://scenes/player.tscn" id="1_or534"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://w53e0j1f05bf" path="res://Assets/Basketball/basketball_arcade_.blend_free_low_poly_v1_Image_6.png" id="13_d8bo2"]
 [ext_resource type="Texture2D" uid="uid://ua647wtnviji" path="res://Assets/Basketball/basketball_arcade_.blend_free_low_poly_v1_Image_7.jpg" id="14_fgufp"]
 [ext_resource type="PackedScene" uid="uid://bqeittd4yblj4" path="res://scenes/ball.tscn" id="14_x8u8k"]
+[ext_resource type="PackedScene" uid="uid://ctc6ovs41jbck" path="res://scenes/shop.tscn" id="15_dqpq4"]
+[ext_resource type="Script" path="res://scripts/ball_spawn_pos.gd" id="16_72bug"]
+[ext_resource type="Script" path="res://scripts/coin_spawn_pos.gd" id="17_wxejj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6joaj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -194,14 +197,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419836, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486438, 4.3867, 0.953494)
 shape = SubResource("SphereShape3D_dd6xl")
 
-[node name="ball" parent="." instance=ExtResource("14_x8u8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.464548, 5.47586, 0.966682)
-
 [node name="ball2" parent="." instance=ExtResource("14_x8u8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.464548, 5.81542, 0.889514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487846, 5.81542, 0.891376)
+
+[node name="ball4" parent="." instance=ExtResource("14_x8u8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.487846, 5.48666, 1.29392)
 
 [node name="ball3" parent="." instance=ExtResource("14_x8u8k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.496631, 6.17288, 0.892314)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382425, 6.17288, 0.590869)
 
 [node name="Viewport2Din3D" parent="." instance=ExtResource("8_w21mm")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.828566, 6.09393, 0.933231)
@@ -220,6 +223,20 @@ surface_material_override/0 = SubResource("StandardMaterial3D_a4ncp")
 
 [node name="CollisionShape3D" parent="blockade/StaticBody3D" index="1"]
 shape = SubResource("BoxShape3D_kxfjg")
+
+[node name="Viewport2Din3D2" parent="." instance=ExtResource("8_w21mm")]
+transform = Transform3D(-1, 0, 0.000244292, 0, 1, 0, -0.000244292, 0, -1, 5.62288, 4.93403, 4.82563)
+scene = ExtResource("15_dqpq4")
+viewport_size = Vector2(1152, 648)
+scene_properties_keys = PackedStringArray("shop.gd")
+
+[node name="ball_spawn_pos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0586295, 6.0752, 0.873937)
+script = ExtResource("16_72bug")
+
+[node name="coin_spawn_pos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21851, 5.39488, -0.847373)
+script = ExtResource("17_wxejj")
 
 [editable path="arcade_basketball/arcade_basketball_model"]
 [editable path="blockade"]

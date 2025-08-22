@@ -17,21 +17,6 @@ tracks/0/keys = {
 "values": [Vector3(0.797622, 0.143955, -0.111244)]
 }
 
-[sub_resource type="Animation" id="Animation_m017y"]
-resource_name = "unblock"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StaticBody3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.797622, 0.143955, -0.111244), Vector3(0.797622, -0.576446, -0.111244)]
-}
-
 [sub_resource type="Animation" id="Animation_868sp"]
 resource_name = "block"
 tracks/0/type = "value"
@@ -45,6 +30,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.798, -0.576, -0.111), Vector3(0.798, 0.144, -0.111)]
+}
+
+[sub_resource type="Animation" id="Animation_m017y"]
+resource_name = "unblock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.797622, 0.143955, -0.111244), Vector3(0.797622, -0.576446, -0.111244)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4tdmq"]

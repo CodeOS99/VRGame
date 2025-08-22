@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctc6ovs41jbck"]
+[gd_scene load_steps=4 format=3 uid="uid://ctc6ovs41jbck"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_yvng8"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_j3rqi"]
+[ext_resource type="Script" path="res://scripts/buy_btn.gd" id="2_rn8kt"]
+[ext_resource type="Script" path="res://scripts/point_label.gd" id="3_y476o"]
 
 [node name="Shop" type="CanvasLayer"]
-script = ExtResource("1_yvng8")
+script = ExtResource("1_j3rqi")
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1152.0
@@ -14,36 +16,164 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -136.0
-offset_right = 136.0
+offset_left = -104.0
+offset_right = 104.0
 offset_bottom = 137.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "SHOP"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="GridContainer" type="GridContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -84.0
-offset_right = 121.0
-offset_bottom = 244.0
+offset_left = -365.0
+offset_top = -116.0
+offset_right = 365.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 38
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 3
 
-[node name="PlayBtn" type="Button" parent="Panel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "PLAY"
+theme_override_constants/separation = 1
 
-[node name="QuitBtn" type="Button" parent="Panel/VBoxContainer"]
+[node name="MorePointsBtn" type="Button" parent="Panel/GridContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "QUIT"
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.554675, 0.69994, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "+points per basket"
+script = ExtResource("2_rn8kt")
+cost = 5
 
-[connection signal="pressed" from="Panel/VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[node name="Label" type="Label" parent="Panel/GridContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "5 points"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+
+[node name="SupremeBallBtn" type="Button" parent="Panel/GridContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.554675, 0.69994, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 38
+text = "balls -> supreme"
+script = ExtResource("2_rn8kt")
+cost = 50
+
+[node name="Label" type="Label" parent="Panel/GridContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "50 points"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+
+[node name="MoreTimeBtn" type="Button" parent="Panel/GridContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.554675, 0.69994, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "+TIME PER GAME"
+script = ExtResource("2_rn8kt")
+
+[node name="Label" type="Label" parent="Panel/GridContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10 points"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+
+[node name="MoreBallBtn" type="Button" parent="Panel/GridContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.554675, 0.69994, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "+1 BALL"
+script = ExtResource("2_rn8kt")
+cost = 15
+
+[node name="Label" type="Label" parent="Panel/GridContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "15 points"
+horizontal_alignment = 1
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+
+[node name="MoreCoinBtn" type="Button" parent="Panel/GridContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.554675, 0.69994, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "+1 coin"
+script = ExtResource("2_rn8kt")
+cost = 1
+
+[node name="Label" type="Label" parent="Panel/GridContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "1 point"
+horizontal_alignment = 1
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+
+[node name="WastePointsBtn" type="Button" parent="Panel/GridContainer/VBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_hover_color = Color(0.554675, 0.69994, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "WASTE POINTS"
+script = ExtResource("2_rn8kt")
+
+[node name="Label" type="Label" parent="Panel/GridContainer/VBoxContainer6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10 points"
+horizontal_alignment = 1
+
+[node name="PointLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Points: 0"
+script = ExtResource("3_y476o")
+
+[connection signal="pressed" from="Panel/GridContainer/VBoxContainer/MorePointsBtn" to="." method="_on_more_points_btn_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/VBoxContainer2/SupremeBallBtn" to="." method="_on_supreme_ball_btn_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/VBoxContainer3/MoreTimeBtn" to="." method="_on_more_time_btn_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/VBoxContainer4/MoreBallBtn" to="." method="_on_more_ball_btn_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/VBoxContainer5/MoreCoinBtn" to="." method="_on_more_coin_btn_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/VBoxContainer6/WastePointsBtn" to="." method="_on_waste_points_btn_pressed"]
