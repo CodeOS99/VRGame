@@ -1,15 +1,21 @@
-[gd_scene load_steps=20 format=4 uid="uid://bqeittd4yblj4"]
+[gd_scene load_steps=24 format=4 uid="uid://bqeittd4yblj4"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_n0xcx"]
 [ext_resource type="PackedScene" uid="uid://c8j0q7306l5ef" path="res://Assets/singleBasketball/ball.blend" id="1_vbl0h"]
 [ext_resource type="Script" path="res://scripts/basketball.gd" id="2_lv62j"]
+[ext_resource type="AudioStream" uid="uid://dwve4das20c6p" path="res://Assets/sounds/sfx/ball_bounce.wav" id="3_6onm3"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_l4bxk"]
+[ext_resource type="AudioStream" uid="uid://dvpsij58pebow" path="res://Assets/sounds/sfx/ball_throw.mp3" id="4_2ibco"]
 [ext_resource type="Animation" uid="uid://cnng6xumhw7cx" path="res://addons/godot-xr-tools/hands/animations/left/Rounded.res" id="4_vwrus"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_j3fhl"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_0ogdh"]
 [ext_resource type="Animation" uid="uid://wcwa3p1qrhwr" path="res://addons/godot-xr-tools/hands/animations/right/Rounded.res" id="7_h0p2o"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="8_4b3tj"]
 [ext_resource type="Texture2D" uid="uid://ds11x6fe4xacw" path="res://Assets/singleBasketball/textures/Image_0.png" id="9_8kw8i"]
+[ext_resource type="AudioStream" uid="uid://dpp8lt5llxefe" path="res://Assets/sounds/sfx/ball_pickup.mp3" id="12_h6e54"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7wsct"]
+bounce = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_psamb"]
 radius = 0.1
@@ -104,14 +110,21 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_flqyo")
 
 [node name="ball" groups=["Ball"] instance=ExtResource("1_n0xcx")]
+physics_material_override = SubResource("PhysicsMaterial_7wsct")
 can_sleep = false
 script = ExtResource("2_lv62j")
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="BallBounce" type="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource("3_6onm3")
+
+[node name="BallThrow" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("4_2ibco")
+
+[node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0121606, 0.00829333, 0)
 shape = SubResource("SphereShape3D_psamb")
 
-[node name="model" parent="." index="1" instance=ExtResource("1_vbl0h")]
+[node name="model" parent="." index="3" instance=ExtResource("1_vbl0h")]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
 
 [node name="Sketchfab_model" parent="model" index="0"]
@@ -120,15 +133,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.520
 [node name="Object_4" parent="model/Sketchfab_model/root/GLTF_SceneRootNode/Sphere_000_0" index="0"]
 mesh = SubResource("ArrayMesh_04pfj")
 
-[node name="GrabPointHandLeft" parent="." index="2" instance=ExtResource("3_l4bxk")]
+[node name="GrabPointHandLeft" parent="." index="4" instance=ExtResource("3_l4bxk")]
 transform = Transform3D(0.992736, 0, 0.12031, 0, 1, 0, -0.12031, 0, 0.992736, -0.119623, 0.0719517, -0.0673819)
 hand_pose = SubResource("Resource_rtuo5")
 
-[node name="GrabPointHandRight" parent="." index="3" instance=ExtResource("6_0ogdh")]
+[node name="GrabPointHandRight" parent="." index="5" instance=ExtResource("6_0ogdh")]
 transform = Transform3D(0.992757, 0, -0.120137, 0, 1, 0, 0.120137, 0, 0.992757, 0.139049, 0.072, -0.067)
 hand_pose = SubResource("Resource_7j1x7")
 
-[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4"]
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="6"]
 transform = Transform3D(0.026, 0, 0, 0, 0.026, 0, 0, 0, 0.026, -0.262229, -0.2437, 0)
 script = ExtResource("8_4b3tj")
 
@@ -148,10 +161,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6212, -73.8342, 16.8502)
 mesh = SubResource("ArrayMesh_5x22j")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="." index="5" groups=["Ball"]]
+[node name="Area3D" type="Area3D" parent="." index="7" groups=["Ball"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0121606, 0.00829333, 0)
 shape = SubResource("SphereShape3D_psamb")
+
+[node name="BallPickup" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("12_h6e54")
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="grabbed" from="." to="." method="_on_grabbed"]
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]
+[connection signal="released" from="." to="." method="_on_released"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 
 [editable path="model"]

@@ -167,13 +167,12 @@ shape = SubResource("ConcavePolygonShape3D_ij26b")
 script = ExtResource("3_bl1sj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ground" groups=["Ground"]]
-visible = false
 mesh = SubResource("BoxMesh_do828")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
 shape = SubResource("ConvexPolygonShape3D_rrqw3")
 
-[node name="Area3D" type="Area3D" parent="ground" groups=["Ground"]]
+[node name="Area3D" type="Area3D" parent="ground"]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ground/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_rrqw3")

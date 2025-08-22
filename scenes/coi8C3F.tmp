@@ -1,23 +1,13 @@
-[gd_scene load_steps=44 format=4 uid="uid://dq7iendk3rfby"]
+[gd_scene load_steps=41 format=4 uid="uid://dq7iendk3rfby"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_rt41g"]
 [ext_resource type="PackedScene" uid="uid://b5xku65q3dut7" path="res://Assets/coin/SilverPirateCoin.fbx" id="2_ktyn1"]
-[ext_resource type="Script" path="res://scripts/coin.gd" id="2_m2dkr"]
-[ext_resource type="AudioStream" uid="uid://cgl7dsfdsi3np" path="res://Assets/sounds/sfx/coin_pickup.mp3" id="3_8i5d2"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_qltpx"]
 [ext_resource type="Animation" uid="uid://dhjb0e334tfwl" path="res://addons/godot-xr-tools/hands/animations/left/Pinch Flat.res" id="4_qhdq1"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_4kxqv"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_cbbxc"]
 [ext_resource type="Animation" uid="uid://dg4v7rqiaje2h" path="res://addons/godot-xr-tools/hands/animations/right/Pinch Flat.res" id="7_sk5ev"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="8_wvwsq"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_0hic5"]
-height = 0.023
-radius = 0.062
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ogeg0"]
-height = 0.022942
-radius = 0.0619071
 
 [sub_resource type="Resource" id="Resource_iauyt"]
 script = ExtResource("5_4kxqv")
@@ -523,32 +513,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v6tfu")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ogeg0"]
+height = 0.022942
+radius = 0.0619071
+
 [node name="Coin" groups=["Coin"] instance=ExtResource("1_rt41g")]
-script = ExtResource("2_m2dkr")
 
-[node name="CoinPickup" type="AudioStreamPlayer" parent="." index="0"]
-stream = ExtResource("3_8i5d2")
-
-[node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.011)
-shape = SubResource("CylinderShape3D_0hic5")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0108861)
-shape = SubResource("CylinderShape3D_ogeg0")
-
-[node name="SilverPirateCoin" parent="." index="3" instance=ExtResource("2_ktyn1")]
+[node name="SilverPirateCoin" parent="." index="1" instance=ExtResource("2_ktyn1")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="GrabPointHandLeft" parent="." index="4" instance=ExtResource("3_qltpx")]
+[node name="GrabPointHandLeft" parent="." index="2" instance=ExtResource("3_qltpx")]
 transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -0.0756151, 0.00101126, -0.0412634)
 hand_pose = SubResource("Resource_iauyt")
 
-[node name="GrabPointHandRight" parent="." index="5" instance=ExtResource("6_cbbxc")]
+[node name="GrabPointHandRight" parent="." index="3" instance=ExtResource("6_cbbxc")]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0.079, 0.001, -0.041)
 hand_pose = SubResource("Resource_rw256")
 
-[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="6"]
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("8_wvwsq")
 
@@ -587,13 +569,10 @@ transform = Transform3D(-0.1, -1.98007e-15, -3.89414e-08, 1.4243e-15, 0.1, -8.74
 mesh = SubResource("ArrayMesh_2kurf")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="." index="7" groups=["Coin"]]
+[node name="Area3D" type="Area3D" parent="." index="5" groups=["Coin"]]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0108861)
 shape = SubResource("CylinderShape3D_ogeg0")
-
-[connection signal="grabbed" from="." to="." method="_on_grabbed"]
-[connection signal="picked_up" from="." to="." method="_on_picked_up"]
 
 [editable path="SilverPirateCoin"]

@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 	Globals.score_board.update_time(timer.time_left)
 
 func _on_snap_zone_has_picked_up(what: Variant) -> void:
+	$DropInSlot.play()
 	timer.wait_time = Globals.time_per_game
 	timer.start()
 	Globals.blockade.unblock()

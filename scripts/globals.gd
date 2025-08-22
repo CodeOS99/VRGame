@@ -2,7 +2,7 @@ class_name Globals
 extends Node3D
 
 static var curr_points: int = 0 # Of this game
-static var points: int = 10000 # Of the whole game to spend
+static var points: int = 0 # Of the whole game to spend
 static var time_per_game: float = 11.0
 static var score_board: Control
 static var blockade: Node3D

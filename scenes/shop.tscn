@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctc6ovs41jbck"]
+[gd_scene load_steps=6 format=3 uid="uid://ctc6ovs41jbck"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_j3rqi"]
 [ext_resource type="Script" path="res://scripts/buy_btn.gd" id="2_rn8kt"]
 [ext_resource type="Script" path="res://scripts/point_label.gd" id="3_y476o"]
+[ext_resource type="AudioStream" uid="uid://bg5lap50ksn2r" path="res://Assets/sounds/sfx/ui_click.mp3" id="4_dkx3y"]
+[ext_resource type="AudioStream" uid="uid://cfrsp01aqdkde" path="res://Assets/sounds/sfx/ui_hover.mp3" id="4_mn4vp"]
 
 [node name="Shop" type="CanvasLayer"]
 script = ExtResource("1_j3rqi")
@@ -171,9 +173,21 @@ theme_override_font_sizes/font_size = 50
 text = "Points: 0"
 script = ExtResource("3_y476o")
 
+[node name="ui_click" type="AudioStreamPlayer" parent="Panel"]
+stream = ExtResource("4_dkx3y")
+
+[node name="UiHover" type="AudioStreamPlayer" parent="Panel"]
+stream = ExtResource("4_mn4vp")
+
+[connection signal="mouse_entered" from="Panel/GridContainer/VBoxContainer/MorePointsBtn" to="." method="_on_more_points_btn_mouse_entered"]
 [connection signal="pressed" from="Panel/GridContainer/VBoxContainer/MorePointsBtn" to="." method="_on_more_points_btn_pressed"]
+[connection signal="mouse_entered" from="Panel/GridContainer/VBoxContainer2/SupremeBallBtn" to="." method="_on_supreme_ball_btn_mouse_entered"]
 [connection signal="pressed" from="Panel/GridContainer/VBoxContainer2/SupremeBallBtn" to="." method="_on_supreme_ball_btn_pressed"]
+[connection signal="mouse_entered" from="Panel/GridContainer/VBoxContainer3/MoreTimeBtn" to="." method="_on_more_time_btn_mouse_entered"]
 [connection signal="pressed" from="Panel/GridContainer/VBoxContainer3/MoreTimeBtn" to="." method="_on_more_time_btn_pressed"]
+[connection signal="mouse_entered" from="Panel/GridContainer/VBoxContainer4/MoreBallBtn" to="." method="_on_more_ball_btn_mouse_entered"]
 [connection signal="pressed" from="Panel/GridContainer/VBoxContainer4/MoreBallBtn" to="." method="_on_more_ball_btn_pressed"]
+[connection signal="mouse_entered" from="Panel/GridContainer/VBoxContainer5/MoreCoinBtn" to="." method="_on_more_coin_btn_mouse_entered"]
 [connection signal="pressed" from="Panel/GridContainer/VBoxContainer5/MoreCoinBtn" to="." method="_on_more_coin_btn_pressed"]
+[connection signal="mouse_entered" from="Panel/GridContainer/VBoxContainer6/WastePointsBtn" to="." method="_on_waste_points_btn_mouse_entered"]
 [connection signal="pressed" from="Panel/GridContainer/VBoxContainer6/WastePointsBtn" to="." method="_on_waste_points_btn_pressed"]
