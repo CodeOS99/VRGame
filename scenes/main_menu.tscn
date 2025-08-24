@@ -47,3 +47,4 @@ theme_override_font_sizes/font_size = 100
 text = "QUIT"
 
 [connection signal="pressed" from="Panel/VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
